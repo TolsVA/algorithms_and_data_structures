@@ -1,8 +1,5 @@
 package homework_4_3;
 
-import homework_4.MyLinkedList;
-
-import java.util.ListIterator;
 import java.util.function.Consumer;
 
 public class DoublyLinkedList<E> extends SinglyLinkedList<E> implements LinkedListDoubly<E>, Iterable<E>{
@@ -184,7 +181,7 @@ public class DoublyLinkedList<E> extends SinglyLinkedList<E> implements LinkedLi
 
     public void indexOf(E key) {
         Node<E> find = head;
-        MyLinkedList<Integer> myLinkedList = new MyLinkedList<>();
+        SinglyLinkedList<Integer> singlyLinkedList = new SinglyLinkedList<>();
         int index = 0;
         while (find != tail) {
             while (!find.data.equals(key)) {
@@ -192,22 +189,22 @@ public class DoublyLinkedList<E> extends SinglyLinkedList<E> implements LinkedLi
                 index++;
                 if (find == tail) {
                     if (find.data.equals(key)) {
-                        myLinkedList.addLast(index);
+                        singlyLinkedList.addFirst(index);
                     }
-                    System.out.println("Количество совпадений значения - " + key + " -> " + myLinkedList.getSize() +
-                            " по следующим индексам " + myLinkedList);
+                    System.out.println("Количество совпадений значения - " + key + " -> " + singlyLinkedList.size() +
+                            " по следующим индексам " + singlyLinkedList);
                     return;
                 }
             }
-            myLinkedList.addLast(index);
+            singlyLinkedList.addFirst(index);
             find = find.next;
             index++;
             if (find == tail) {
                 if (find.data.equals(key)) {
-                    myLinkedList.addLast(index);
+                    singlyLinkedList.addFirst(index);
                 }
-                System.out.println("Количество совпадений значения - ( " + key + " ) -> " + myLinkedList.getSize() +
-                        " по следующим индексам" + myLinkedList);
+                System.out.println("Количество совпадений значения - ( " + key + " ) -> " + singlyLinkedList.size() +
+                        " по следующим индексам" + singlyLinkedList);
             }
         }
     }
@@ -274,11 +271,23 @@ public class DoublyLinkedList<E> extends SinglyLinkedList<E> implements LinkedLi
     }
 
     @Override
-    public ListIterator<E> iterator() {
-        return new ListIterator<>() {
+    public MyListIterator<E> iterator() {
+        return new MyListIterator<>() {
 
             Node<E> node = head;
             int index = 0;
+
+            @Override
+            public void nextFirst() {
+                node = head;
+                index = 0;
+            }
+
+            @Override
+            public void nextLast() {
+                node = tail;
+                index = size -1;
+            }
 
             @Override
             public boolean hasNext() {
@@ -358,7 +367,7 @@ public class DoublyLinkedList<E> extends SinglyLinkedList<E> implements LinkedLi
 
             @Override
             public void forEachRemaining(Consumer<? super E> action) {
-                ListIterator.super.forEachRemaining(action);
+                MyListIterator.super.forEachRemaining(action);
             }
         };
     }

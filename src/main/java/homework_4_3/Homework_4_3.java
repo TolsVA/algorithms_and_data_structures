@@ -1,7 +1,5 @@
 package homework_4_3;
 
-import java.util.ListIterator;
-
 public class Homework_4_3 {
     public static void main(String[] args) {
 
@@ -14,8 +12,6 @@ public class Homework_4_3 {
         testIterator(doublyLinkedList);
 
         testIterator2(doublyLinkedList);
-
-//        testDeque();
 
         LinkedQueue<Integer> linkedQueue= new LinkedQueue<>();
         testLinkedQueue(linkedQueue);
@@ -38,7 +34,7 @@ public class Homework_4_3 {
     private static <E> void testIterator(DoublyLinkedList<E> doublyLinkedList) {
         System.out.println("testIterator:");
 
-        ListIterator<E> iterator = doublyLinkedList.iterator();
+        MyListIterator<E> iterator = doublyLinkedList.iterator();
         int c = 0;
         while (iterator.hasNext()) {
             iterator.next();
@@ -62,10 +58,8 @@ public class Homework_4_3 {
         }
         doublyLinkedList.display();
 
-        System.out.println(iterator);
-        while (iterator.hasNext()) {
-            iterator.next();
-        }
+        iterator.nextLast();
+
         System.out.println(iterator);
 
         System.out.print("Проход в обратную сторону - [" + iterator);
@@ -78,10 +72,9 @@ public class Homework_4_3 {
         System.out.println();
 
         System.out.println(iterator);
-        while (!iterator.hasNext()) {
-            iterator.next();
-        }
+        iterator.nextFirst();
         System.out.println(iterator);
+
 
         System.out.print("[" + iterator);
         iterator.forEachRemaining(val -> System.out.print(", " + iterator));
