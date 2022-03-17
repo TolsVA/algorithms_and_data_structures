@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Main {
     private static Long time;
-    private static final long NOTEBOOKS_SIZE = 1000000;
+    private static final long NOTEBOOKS_SIZE = 50000;
     public static void main(String[] args) {
 
 //  ###1. Отсортировать массив, состоящий из экземпляров класса Notebook в количестве 10000 штук.
