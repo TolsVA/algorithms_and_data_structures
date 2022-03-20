@@ -286,7 +286,7 @@ public class DoublyLinkedList<E> extends SinglyLinkedList<E> implements LinkedLi
             @Override
             public void nextLast() {
                 node = tail;
-                index = size -1;
+                index = size - 1;
             }
 
             @Override
