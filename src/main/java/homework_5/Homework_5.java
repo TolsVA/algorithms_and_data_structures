@@ -12,7 +12,7 @@ public class Homework_5 {
 //        2. Написать программу «Задача о рюкзаке» с помощью рекурсии.
 
         double n = 2;
-        int s = -4;
+        int s = 4;
         System.out.println(exponentiation(n, s));
 
         new Homework_5().findAll();
